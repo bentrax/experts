@@ -1,0 +1,16 @@
+{
+  "name": "cola",
+  "owner": {
+    "name": "boydga"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for the College of Liberal Arts."
+  },
+  "plugins": [
+    {
+      "name": "experts",
+      "source": "./plugins/experts",
+      "description": "Find College of Liberal Arts faculty experts for media requests and research highlights."
+    }
+  ]
+}
