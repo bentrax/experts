@@ -6,7 +6,7 @@ A Claude Code plugin marketplace named `cola` (repo: `cola-laits/agent-plugins`)
 
 Find College of Liberal Arts faculty experts for media requests and research highlights.
 The plugin is skills plus a connector: the data and search live in colaweb's hosted
-`cola-experts` MCP server; users sign in with their UT EID the first time it's used.
+`cola-experts` MCP server.
 
 ```
 .claude-plugin/marketplace.json      catalog: marketplace name + list of plugins
@@ -20,23 +20,32 @@ plugins/experts/
 
 ## Install
 
-In the Claude desktop app's Code tab:
+In the Claude desktop app, open **Settings** → **Customize** → **Plugins**:
 
-```
-/plugin marketplace add cola-laits/agent-plugins
-/plugin install experts@cola
-```
+1. **+ Add** → **Add marketplace**, enter `cola-laits/agent-plugins`, and click **Sync**.
+2. On the **Discover** tab, install **Experts**.
+3. Start a new session in the **Code** tab.
 
-Turn on auto-update for the `cola` marketplace. The first `/experts:find` prompts for UT sign-in.
+## Update
 
-To test changes before pushing, add this folder as a marketplace instead:
-`/plugin marketplace add /Users/boydga-admin/Documents/code/experts`.
+1. **Settings** → **Customize** → **Plugins** → **+ Add** → **Manage marketplaces**.
+2. Next to **cola**, click **⋯** → **Check for updates**, then **Done**.
+3. Start a new session in the **Code** tab. Sessions already open keep the old version.
+
+If it still acts like the old version, click **⋯** next to Experts → **Remove**, then install it
+again from **Discover**.
+
+## Use
+
+In a Code session, type `/experts:find` with a topic or a pasted reporter request,
+`/experts:profile` with a name or EID, or `/experts:gaps`. You can also just ask, e.g.
+"Who in Liberal Arts could talk to a reporter about voter turnout?"
 
 ## Release a new version
 
 1. Change the plugin.
 2. Bump `"version"` in `plugins/experts/.claude-plugin/plugin.json`.
-3. Commit and push. Clients get it the next time Claude Code checks for updates.
+3. Commit and push. Users get it when they run the update steps above.
 
 Pushes that don't bump the version don't reach clients.
 

@@ -2,7 +2,7 @@
   "mcpServers": {
     "cola-experts": {
       "type": "http",
-      "url": "https://webeditor.la.utexas.edu/mcp/experts"
+      "url": "https://webeditor.development.la.utexas.edu/mcp/experts"
     }
   }
 }
