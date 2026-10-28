@@ -9,8 +9,9 @@ argument-hint: <topic, question, or pasted request>
 Request: $ARGUMENTS
 
 Use the `cola-experts` connector's tools. If they aren't available, tell the user the COLA experts
-connector isn't connected (check `/mcp` and sign in with their UT EID) and stop. Don't answer from
-general knowledge instead.
+connector isn't connected and stop; don't answer from general knowledge instead. Suggest typing
+`/mcp` to check `cola-experts`: if it's missing, update the Experts plugin and start a new session;
+if it shows as failed, the server may be down.
 
 ## 1. Understand the request
 Work out, from the wording (don't ask unless it's genuinely ambiguous):

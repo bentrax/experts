@@ -9,7 +9,9 @@ argument-hint: <name or EID>
 Person: $ARGUMENTS
 
 Call the `cola-experts` connector's `get_profile` with the name or EID. If the tool isn't available,
-tell the user the COLA experts connector isn't connected (check `/mcp` and sign in with their UT EID) and stop.
+tell the user the COLA experts connector isn't connected and stop. Suggest typing `/mcp` to check
+`cola-experts`: if it's missing, update the Experts plugin and start a new session; if it shows as
+failed, the server may be down.
 
 - **Several matches**: list them (name, title, department) and ask which one; then call again with the EID.
 - **No match**: say so; suggest a different spelling, or that they may not be in the COLA directory.

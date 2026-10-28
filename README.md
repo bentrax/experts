@@ -15,7 +15,6 @@ plugins/experts/
   .mcp.json                          the cola-experts connector (colaweb)
   skills/find/SKILL.md               /experts:find <topic or request>
   skills/profile/SKILL.md            /experts:profile <name or EID>
-  skills/gaps/SKILL.md               /experts:gaps   (UT Experts coverage report)
 ```
 
 ## Install
@@ -38,7 +37,7 @@ again from **Discover**.
 ## Use
 
 In a Code session, type `/experts:find` with a topic or a pasted reporter request,
-`/experts:profile` with a name or EID, or `/experts:gaps`. You can also just ask, e.g.
+or `/experts:profile` with a name or EID. You can also just ask, e.g.
 "Who in Liberal Arts could talk to a reporter about voter turnout?"
 
 ## Release a new version
