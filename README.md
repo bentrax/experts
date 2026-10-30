@@ -29,7 +29,8 @@ In the Claude desktop app, open **Settings** → **Customize** → **Plugins**:
 
 1. **Settings** → **Customize** → **Plugins** → **+ Add** → **Manage marketplaces**.
 2. Next to **cola**, click **⋯** → **Check for updates**, then **Done**.
-3. Start a new session in the **Code** tab. Sessions already open keep the old version.
+3. Back in **Plugins**, click **Experts** → **Update**.
+4. Start a new session in the **Code** tab. Sessions already open keep the old version.
 
 If it still acts like the old version, click **⋯** next to Experts → **Remove**, then install it
 again from **Discover**.
