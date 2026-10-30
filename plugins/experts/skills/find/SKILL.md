@@ -8,6 +8,8 @@ argument-hint: <topic, question, or pasted request>
 
 Request: $ARGUMENTS
 
+Default count: **5** people (N below, unless the request asks for a different number).
+
 Use the `cola-experts` connector's tools. If they aren't available, tell the user the COLA experts
 connector isn't connected and stop; don't answer from general knowledge instead. Suggest typing
 `/mcp` to check `cola-experts`: if it's missing, update the Experts plugin and start a new session;
@@ -17,7 +19,7 @@ if it shows as failed, the server may be down.
 Work out, from the wording (don't ask unless it's genuinely ambiguous):
 - **Topic**, and any angle (e.g. "Texas", "historical", "policy").
 - **Purpose**: *media* (default; a reporter needs someone to talk to) or *feature* (words like "feature", "highlight", "story ideas", "spotlight").
-- **How many**: default 3–5 for media, 5–8 for feature.
+- **How many** (N): the number the request asks for, otherwise the default count. Same for media and feature.
 - **Constraints**: department, deadline, "include grad students", etc.
 
 ## 2. Search
@@ -25,14 +27,15 @@ Call `search_experts` with 4–8 `terms`: the exact phrase, synonyms, narrower s
 fields, and the vocabulary scholars would use (a reporter's "AI and jobs" → "artificial intelligence",
 "automation", "labor market", "future of work", "technology and employment").
 
+- `limit`: 3 × N, at least 15 and at most 50.
 - `department`: a slug from `list_departments`, when the request names one.
 - `roles: ["faculty"]` unless the user wants researchers or graduate students too.
 - `list_research_areas` shows the tags departments actually use; helpful for picking terms.
 - If results are thin, search again with broader or different terms before concluding.
 
 ## 3. Vet the top candidates
-Call `get_profile` with the EID of each of the 5–8 strongest and judge fit yourself; the search
-score is only a starting point.
+Call `get_profile` with the EID of each of the 2 × N strongest (at most 15) and judge fit yourself;
+the search score is only a starting point.
 
 Prefer, in order:
 1. Expertise stated directly: research-area tags, interests, publication titles, UT Experts blurb.
@@ -44,7 +47,8 @@ Then weigh: faculty over researchers over graduate students; recent publications
 Flag anyone **on leave**, any record not updated in 2+ years, and grad students.
 
 ## 4. Answer
-Media format, one block per person, best first:
+Up to N people, best first; fewer rather than padding with weak matches. Media format, one block
+per person:
 
 **Name**, Title, Department
 Why they fit: one sentence grounded in the record (quote a phrase where useful).
