@@ -48,14 +48,19 @@ Flag anyone **on leave**, any record not updated in 2+ years, and grad students.
 
 ## 4. Answer
 Up to N people, best first; fewer rather than padding with weak matches. Media format, one block
-per person:
+per person, with the name alone as its heading so names read at a glance:
 
-**Name**, Title, Department
-Why they fit: one sentence grounded in the record (quote a phrase where useful).
-Evidence: [Profile](profile_url) · [Paper or book title](url) · [UT Experts](url)
-Contact: email · Flags: e.g. "Not in UT Experts", "On leave"
+```markdown
+### 1. Name
+Title · Department
 
-For *feature* requests, lead each person with one or two possible story angles from their recent work.
+- **Why they fit:** one sentence grounded in the record (quote a phrase where useful).
+- **Evidence:** [Profile](profile_url) · [Paper or book title](url) · [UT Experts](url)
+- **Contact:** email
+- **Flags:** e.g. "Not in UT Experts", "On leave" (leave this line out if there are none)
+```
+
+For *feature* requests, add one or two possible story angles from their recent work just below the title line.
 
 End with: *COLA data as of {data_as_of}. Check availability before referring.*
 
