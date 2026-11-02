@@ -1,6 +1,6 @@
 # agent-plugins
 
-A Claude Code plugin marketplace named `cola` (repo: `cola-laits/agent-plugins`).
+A Claude Code plugin marketplace named `cola-experts` (repo: `cola-laits/agent-plugins`).
 
 ## experts
 
@@ -28,7 +28,7 @@ In the Claude desktop app, open **Settings** → **Customize** → **Plugins**:
 ## Update
 
 1. **Settings** → **Customize** → **Plugins** → **+ Add** → **Manage marketplaces**.
-2. Next to **cola**, click **⋯** → **Check for updates**, then **Done**.
+2. Next to **cola-experts**, click **⋯** → **Check for updates**, then **Done**.
 3. Back in **Plugins**, click **Experts** → **Update**.
 4. Start a new session in the **Code** tab. Sessions already open keep the old version.
 
