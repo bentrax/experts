@@ -13,7 +13,7 @@ Default count: **5** people (N below, unless the request asks for a different nu
 
 Use the `cola-experts` connector's tools. If they aren't available, tell the user the COLA experts
 connector isn't connected and stop; don't answer from general knowledge instead. Suggest typing
-`/mcp` to check `cola-experts`: if it's missing, update the Experts plugin and start a new session;
+`/mcp` to check `cola-experts`: if it's missing, remove the Experts plugin, install it again, and start a new session;
 if it shows as failed, the server may be down.
 
 ## 1. Understand the request
@@ -51,7 +51,7 @@ Flag anyone **on leave**, any record not updated in 2+ years, and grad students.
 For each person you'll list, run these `WebSearch` calls, all in parallel:
 1. `"Full Name" "University of Texas"` plus 2–3 topic words: news coverage, quotes, op-eds, interviews, podcasts.
 2. `"Full Name"` plus their department or field: personal or lab website, other coverage.
-3. `"Full Name"` with `allowed_domains` bsky.app, x.com, twitter.com, linkedin.com, threads.net, youtube.com: social accounts.
+3. `"Full Name"` with `allowed_domains` bsky.app, x.com, twitter.com, youtube.com, substack.com: social accounts and newsletters.
 
 - Keep a result only if it clearly identifies this person: it names UT Austin, their department or field, or links to a site in their record. If unsure, leave it out.
 - Don't fetch the pages; the result's title, outlet, and date are enough.
@@ -70,7 +70,7 @@ Title · Department
 - **Why they fit:** one sentence grounded in the record (quote a phrase where useful).
 - **Evidence:** [Profile](profile_url) · [Paper or book title](url) · [UT Experts](url)
 - **Contact:** email
-- **External mentions:** [Personal site](url) · [Outlet: "Headline" (Mon YYYY)](url) · [Bluesky](url) · [LinkedIn](url) (up to 3 news items, on-topic first, then newest; "none found" if nothing)
+- **External mentions:** [Personal site](url) · [Outlet: "Headline" (Mon YYYY)](url) · [Bluesky](url) · [Substack](url) (up to 3 news items, on-topic first, then newest; "none found" if nothing)
 - **Flags:** e.g. "Not in UT Experts", "On leave" (leave this line out if there are none)
 ```
 
