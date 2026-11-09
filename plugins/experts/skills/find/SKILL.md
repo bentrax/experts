@@ -47,7 +47,7 @@ Then weigh: faculty over researchers over graduate students; recent publications
 **UT Experts listed** = has agreed to be a media contact. **Not listed** = flag "confirm willingness first".
 Flag anyone **on leave**, any record not updated in 2+ years, and grad students.
 
-## 4. Search the web
+## 4. Search the web and OpenAlex
 For each person you'll list, run these `WebSearch` calls, all in parallel:
 1. `"Full Name" "University of Texas"` plus 2–3 topic words: news coverage, quotes, op-eds, interviews, podcasts.
 2. `"Full Name"` plus their department or field: personal or lab website, other coverage.
@@ -59,6 +59,16 @@ For each person you'll list, run these `WebSearch` calls, all in parallel:
 - Keep UT's own coverage (UT News, liberalarts.utexas.edu). For *feature* requests, flag a past feature there: "Already featured by COLA (Mon YYYY)" or "by UT News".
 - If `WebSearch` isn't available, skip this step, leave out the External mentions line, and say so once above the list.
 
+Also call `get_publications` once per person you'll list (never for the others you vetted), with
+`query` = their EID and `limit` 3, in parallel with the web searches:
+- `status: matched` → use `author` and `publications`.
+- `status: candidates` → compare each candidate's `display_name`, `display_name_alternatives`, `last_known_institutions`, `works_count` and `topics` with the person's COLA department, title and interests. If exactly one clearly fits, call again with its `author_id` (same `limit`) and flag "OpenAlex match chosen by name; verify". If none fits, or two fit equally, treat it as `none`.
+- `status: none` → write "no OpenAlex record identified" on the line. This says nothing about their output; OpenAlex covers books and the humanities thinly.
+- Flag "OpenAlex author not at UT Austin" when `author.last_known_institutions` doesn't include UT Austin.
+- A tool error "OpenAlex: not found." (unknown `author_id`) is `status: none` for that person only; later calls continue.
+- On a tool error (`OpenAlex unavailable …`): make no further `get_publications` calls this run, leave out the Publications (OpenAlex) line for everyone, and say "OpenAlex lookup unavailable" once above the list.
+- OpenAlex results never change titles, contact details, or who is on the list. Mention `openalex_as_of` only if asked how fresh they are.
+
 ## 5. Answer
 Up to N people, best first; fewer rather than padding with weak matches. Media format, one block
 per person, with the name alone as its heading so names read at a glance:
@@ -69,9 +79,10 @@ Title · Department
 
 - **Why they fit:** one sentence grounded in the record (quote a phrase where useful).
 - **Evidence:** [Profile](profile_url) · [Paper or book title](url) · [UT Experts](url)
+- **Publications (OpenAlex):** {author.works_count} works · [Title (YYYY)](doi_url, else openalex_url) · … (up to 3, newest first, kept apart from the COLA titles in Evidence; "no OpenAlex record identified" if none)
 - **Contact:** email
 - **External mentions:** [Personal site](url) · [Outlet: "Headline" (Mon YYYY)](url) · [Bluesky](url) · [Substack](url) (up to 3 news items, on-topic first, then newest; "none found" if nothing)
-- **Flags:** e.g. "Not in UT Experts", "On leave" (leave this line out if there are none)
+- **Flags:** e.g. "Not in UT Experts", "On leave", "OpenAlex match chosen by name; verify" (leave this line out if there are none)
 ```
 
 For *feature* requests, add one or two possible story angles from their recent work just below the title line.
@@ -79,6 +90,6 @@ For *feature* requests, add one or two possible story angles from their recent w
 End with: *COLA data as of {data_as_of}. External mentions from a web search on {today's date}; may be incomplete. Check availability before referring.*
 
 Rules:
-- Use only facts in the records, except External mentions, which come only from web results, each linked to its source. Never invent publications, titles, or contact details.
+- Use only facts in the records, except External mentions, which come only from web results, each linked to its source, and Publications (OpenAlex), which come only from `get_publications`. Never invent publications, titles, or contact details.
 - Cite with the URLs in the record; if a claim has no URL, say which field it came from.
 - If nobody is a strong match, say so and list the closest people with what's missing.
