@@ -33,6 +33,8 @@ Also run these `WebSearch` calls, all in parallel:
 
 Keep a result only if it clearly identifies this person: it names UT Austin, their department or field, or links to a site in their record. If unsure, leave it out. Don't fetch the pages. Web results never change titles or contact details. If `WebSearch` isn't available, skip it, leave out the External mentions line, and say so.
 
+COLA news is `news` in the record: COLA public affairs articles that name the person (at most 5, newest first). Keep an item only if its `snippet` shows their full name as a person's name; the match is by name in free text and can be wrong. Drop a web result whose URL is already in `news`.
+
 Present it in the same layout as `/experts:find`, with the name alone as the heading:
 
 ```markdown
@@ -44,6 +46,7 @@ Title · Department(s) and role · [Profile](profile_url)
 - **Publications (OpenAlex):** [OpenAlex author](author.url) · works_count works · last_known_institutions; then the newest 10 as sub-bullets, each Title (year, type, venue) linked to `doi_url`, else `openalex_url`. Kept apart from Recent publications, which is COLA's own list. "no OpenAlex record identified" if none.
 - **Recent courses:** titles; link syllabi.
 - **Media:** UT Experts listed or not ([UT Experts](url)), and its expertise blurb if listed.
+- **COLA news:** the kept `news` items, newest first, one sub-bullet each as [Headline (Mon YYYY)](url); add "and N more" when `news_count` is higher than the number of items in `news`. Leave this line out if there are none.
 - **Contact:** email · [CV](cv_url) · personal website links
 - **External mentions:** [Personal site](url) · up to 5 news items, newest first, as [Outlet: "Headline" (Mon YYYY)](url) · social accounts ([Bluesky](url), [Substack](url), …); "none found" if nothing.
 - **Flags:** on leave; record not updated in 2+ years (`updated`); UT Experts title differs from COLA's (COLA is authoritative); graduate student; OpenAlex match chosen by name, or OpenAlex author not at UT Austin (verify). Leave this line out if there are none.

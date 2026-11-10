@@ -1,6 +1,6 @@
 {
   "name": "experts",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Find College of Liberal Arts faculty experts for media requests and research highlights, via the colaweb cola-experts connector.",
   "author": {
     "name": "boydga"

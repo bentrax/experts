@@ -47,6 +47,11 @@ Then weigh: faculty over researchers over graduate students; recent publications
 **UT Experts listed** = has agreed to be a media contact. **Not listed** = flag "confirm willingness first".
 Flag anyone **on leave**, any record not updated in 2+ years, and grad students.
 
+COLA news is `news` in the profile: COLA public affairs articles that name the person.
+- Keep an item only if its `snippet` shows their full name as a person's name; the match is by name in free text and can be wrong.
+- `mention` `headline` or `lead`, on the topic: strong evidence, counts as 1. `mention` `body`: a passing mention, counts as 3.
+- No `news` key or an empty list means nothing to show, not that there is no coverage.
+
 ## 4. Search the web and OpenAlex
 For each person you'll list, run these `WebSearch` calls, all in parallel:
 1. `"Full Name" "University of Texas"` plus 2–3 topic words: news coverage, quotes, op-eds, interviews, podcasts.
@@ -56,7 +61,8 @@ For each person you'll list, run these `WebSearch` calls, all in parallel:
 - Keep a result only if it clearly identifies this person: it names UT Austin, their department or field, or links to a site in their record. If unsure, leave it out.
 - Don't fetch the pages; the result's title, outlet, and date are enough.
 - Web results never change titles, contact details, or who is on the list.
-- Keep UT's own coverage (UT News, liberalarts.utexas.edu). For *feature* requests, flag a past feature there: "Already featured by COLA (Mon YYYY)" or "by UT News".
+- Keep UT's own coverage: UT News, liberalarts.utexas.edu, and Life & Letters (COLA's magazine, lifeandletters.la.utexas.edu). Drop a result whose URL is already in the person's `news`; it goes on the COLA news line instead.
+- For *feature* requests, flag a past feature, from these results or a kept `news` item with `mention` `headline` or `lead`: "Already featured by COLA (Mon YYYY)" (Life & Letters counts as COLA) or "by UT News".
 - If `WebSearch` isn't available, skip this step, leave out the External mentions line, and say so once above the list.
 
 Also call `get_publications` once per person you'll list (never for the others you vetted), with
@@ -79,6 +85,7 @@ Title · Department
 
 - **Why they fit:** one sentence grounded in the record (quote a phrase where useful).
 - **Evidence:** [Profile](profile_url) · [Paper or book title](url) · [UT Experts](url)
+- **COLA news:** [Headline (Mon YYYY)](url) · … (up to 3 kept `news` items, on-topic first, then newest; leave this line out if there are none)
 - **Publications (OpenAlex):** {author.works_count} works · [Title (YYYY)](doi_url, else openalex_url) · … (up to 3, newest first, kept apart from the COLA titles in Evidence; "no OpenAlex record identified" if none)
 - **Contact:** email
 - **External mentions:** [Personal site](url) · [Outlet: "Headline" (Mon YYYY)](url) · [Bluesky](url) · [Substack](url) (up to 3 news items, on-topic first, then newest; "none found" if nothing)
