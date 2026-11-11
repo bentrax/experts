@@ -35,6 +35,8 @@ Keep a result only if it clearly identifies this person: it names UT Austin, the
 
 COLA news is `news` in the record: COLA public affairs articles that name the person (at most 5, newest first). Keep an item only if its `snippet` shows their full name as a person's name; the match is by name in free text and can be wrong. Drop a web result whose URL is already in `news`.
 
+Life & Letters is `life_and_letters` in the record: every Life & Letters (COLA's magazine) article that names the person, newest first, not capped. Keep an item only if its `snippet` shows their full name as a person's name and fits their field; the match is by name only and can be a namesake. Drop a web result for an article already in `life_and_letters`.
+
 Present it in the same layout as `/experts:find`, with the name alone as the heading:
 
 ```markdown
@@ -47,6 +49,7 @@ Title · Department(s) and role · [Profile](profile_url)
 - **Recent courses:** titles; link syllabi.
 - **Media:** UT Experts listed or not ([UT Experts](url)), and its expertise blurb if listed.
 - **COLA news:** the kept `news` items, newest first, one sub-bullet each as [Headline (Mon YYYY)](url); add "and N more" when `news_count` is higher than the number of items in `news`. Leave this line out if there are none.
+- **Life & Letters:** every kept `life_and_letters` item, not a sample, newest first, one sub-bullet each as [Headline (Mon YYYY)](url). Leave this line out if there are none.
 - **Contact:** email · [CV](cv_url) · personal website links
 - **External mentions:** [Personal site](url) · up to 5 news items, newest first, as [Outlet: "Headline" (Mon YYYY)](url) · social accounts ([Bluesky](url), [Substack](url), …); "none found" if nothing.
 - **Flags:** on leave; record not updated in 2+ years (`updated`); UT Experts title differs from COLA's (COLA is authoritative); graduate student; OpenAlex match chosen by name, or OpenAlex author not at UT Austin (verify). Leave this line out if there are none.
